@@ -1,0 +1,32 @@
+<!--<!DOCTYPE html >
+<html ng-app="LoginApp">
+
+<head>
+	<title>Login</title>
+	<meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script src="LoginApp.js"></script>
+
+</head>
+
+<body ng-controller="myCtrl as ctrl">-->
+	<div class="container"  style="padding:30px">	
+		<h1>MyLogin Page</h1>
+		<form>
+			<div class="alert alert-warning" ng-show="ctrl.failedResponse">	<!--if there is a failed login attempt-->
+				  <strong>Warning!</strong> Password or username is invalid
+			</div >
+		    <div class="form-group">					<!--login form-->
+		        <label for="usn">UserName:</label>
+		        <input type="text" class="form-control" ng-model="ctrl.username" name="u_name" id="usn" >
+		        <label for="psw">Password:</label>
+		       	<input type="password" class="form-control"  ng-model="ctrl.password" name="p_word" id="psw">
+		        <button class="btn btn-primary" type="submit" ng-click= "ctrl.checkInfo()">Login</button>
+	    `	</div>
+	    </form>
+    </div>
+<!--</body>
+
+</html>-->

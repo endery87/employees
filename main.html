@@ -1,0 +1,86 @@
+<!--<!DOCTYPE html>
+<html ng-app="EmployeeApp">
+
+<head>
+    <title>Employees</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+        <script src="EmployeeApp.js"></script>
+
+</head>
+
+<body ng-controller="myCtrl as ctrl">-->
+<div class="container" style="padding:30px">    <!--main application view-->
+    <form class="row">                          <!--row for new employee creation form-->
+        <div class="col-xs-4 col-sm-4 col-lg-4">
+            <label for="usn">First Name:</label>
+            <input type="text" class=form-control ng-model="ctrl.newFirstName" ng-required="true">
+        </div>
+        <div class="col-xs-4 col-sm-4 col-lg-4">
+            <label for="usn">Last Name:</label>
+            <input type="text" class=form-control ng-model="ctrl.newLastName" ng-required="true">
+        </div>
+        <div class="col-xs-4 col-sm-4 col-lg-4">
+            <label for="usn">Position:</label>
+            <input type="text" class=form-control ng-model="ctrl.newPosition" ng-required="true">
+        </div>
+        <div style="text-align:center">
+            <button type="button" class="btn btn-default" ng-click="ctrl.addNew()" ng-disabled="!ctrl.newReady()">Add</button>
+        </div>
+    </form>
+    <div class="table-responsive">  <!--table for displaying employees-->
+        <table class="table table-striped">
+            <tr>
+                <th></th>   <!--table headers with filtering areas and sorting spans-->
+                <th>FirstName
+                    <span ng-click="ctrl.sort('firstname','DESC')" class="glyphicon glyphicon-triangle-bottom"></span>
+                    <span ng-click="ctrl.sort('firstname','ASC')" class="glyphicon glyphicon-triangle-top"></span>
+                    <br><input type="text" ng-model="ctrl.firstNameFilter" ng-change="ctrl.filter()" style="height:20px; width:80px"></input>
+                </th>
+                <th>LastName
+                    <span ng-click="ctrl.sort('lastname','DESC')" class="glyphicon glyphicon-triangle-bottom"></span>
+                    <span ng-click="ctrl.sort('lastname','ASC')" class="glyphicon glyphicon-triangle-top"></span>
+                    <br><input type="text" ng-model="ctrl.lastNameFilter" ng-change="ctrl.filter()" style="height:20px; width:80px"></input>
+                </th>
+                <th>Position
+                    <span ng-click="ctrl.sort('position','DESC')" class="glyphicon glyphicon-triangle-bottom"></span>
+                    <span ng-click="ctrl.sort('position','ASC')" class="glyphicon glyphicon-triangle-top"></span>
+                    <br><input type="text" ng-model="ctrl.positionFilter" ng-change="ctrl.filter()" style="height:20px; width:80px"></input>
+                </th>
+            </tr>
+            <tr ng-repeat="i in ctrl.myArray track by $index">   <!--table data for employees. if in edit mode,the cells are converted to input fields-->
+                <td><input type="checkbox" ng-change="ctrl.checkBoxClicked()" ng-model="ctrl.flags[$index]"></td>
+                <td>
+                    <input ng-if="ctrl.editMode && ctrl.flags[$index]" ng-value="i.firstName" ng-model="i.firstNameEdit">
+                    <p ng-if="!ctrl.editMode ||  !ctrl.flags[$index]">{{i.firstName}}</p>
+                </td>
+                <td>
+                    <input ng-if="ctrl.editMode && ctrl.flags[$index]" ng-value="i.lastName" ng-model="i.lastNameEdit">
+                    <p ng-if="!ctrl.editMode ||  !ctrl.flags[$index]">{{i.lastName}}</p>
+                </td>
+                <td>
+                    <input ng-if="ctrl.editMode && ctrl.flags[$index]" ng-value="i.position" ng-model="i.positionEdit">
+                    <p ng-if="!ctrl.editMode ||  !ctrl.flags[$index]">{{i.position}}</p>
+                </td>
+
+            </tr>
+        </table>
+    </div>
+        <!--save, edit, delete and  cancel buttons--> 
+        <button type="button" class="btn btn-default" ng-if="!ctrl.editMode && ctrl.flagged" ng-click="ctrl.delete()" ng-disabled="!ctrl.flagged">Delete</button>
+        <button type="button" class="btn btn-default" ng-if="!ctrl.editMode && ctrl.flagged" ng-click="ctrl.editToggle()" ng-disabled="!ctrl.flagged">Edit</button>
+        <button type="button" class="btn btn-default" ng-if="ctrl.editMode" ng-click="ctrl.saveEdit()">Save</button>
+        <button type="button" class="btn btn-default" ng-if="ctrl.editMode" ng-click="ctrl.cancelEdit()">Cancel</button>
+        <br>
+        <!--logout button-->
+                <div style="text-align:center">
+	    <button class="btn btn-primary" type="logout" ng-click= "ctrl.logout()">Logout</button>
+        </div>
+
+</div>
+
+    <!--</body>
+
+</html>-->
